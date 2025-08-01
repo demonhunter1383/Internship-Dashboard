@@ -3,7 +3,7 @@ from functools import wraps
 import os, json, re
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "dev-secret")
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-secret")
 
 DATA_PATH = os.path.join(os.path.dirname(__file__), "data.json")
 
