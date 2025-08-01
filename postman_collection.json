@@ -1,0 +1,43 @@
+{
+  "info": {
+    "name": "Fundraising Intern Portal",
+    "_postman_id": "demo-collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET User",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/user",
+          "host": [
+            "http://localhost:5000"
+          ],
+          "path": [
+            "api",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET Leaderboard",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/leaderboard",
+          "host": [
+            "http://localhost:5000"
+          ],
+          "path": [
+            "api",
+            "leaderboard"
+          ]
+        }
+      }
+    }
+  ]
+}

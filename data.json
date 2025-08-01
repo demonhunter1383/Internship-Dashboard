@@ -1,0 +1,51 @@
+{
+  "user": {
+    "name": "parsa",
+    "referralCode": 2025,
+    "totalRaised": 0,
+    "rewards": [
+      {
+        "title": "Bronze Badge",
+        "unlocked": true,
+        "desc": "Raised \u20b91,000+"
+      },
+      {
+        "title": "Silver Badge",
+        "unlocked": false,
+        "desc": "Raised \u20b910,000+"
+      },
+      {
+        "title": "Gold Badge",
+        "unlocked": false,
+        "desc": "Raised \u20b925,000+"
+      }
+    ]
+  },
+  "leaderboard": [
+    {
+      "name": "Aisha",
+      "referralCode": "aisha2025",
+      "totalRaised": 18000
+    },
+    {
+      "name": "Parsa Parhami",
+      "referralCode": "parsa2025",
+      "totalRaised": 12500
+    },
+    {
+      "name": "Rohit",
+      "referralCode": "rohit2025",
+      "totalRaised": 9200
+    },
+    {
+      "name": "demonhunter1383",
+      "referralCode": "demonhunter13832025",
+      "totalRaised": 0
+    },
+    {
+      "name": "parsa",
+      "referralCode": 2025,
+      "totalRaised": 0
+    }
+  ]
+}
