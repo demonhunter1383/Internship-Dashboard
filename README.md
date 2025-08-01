@@ -74,6 +74,19 @@ https://<your-app>.up.railway.app
 - /explorer/user, /explorer/leaderboard (pretty API views)
 - /api/user, /api/leaderboard (raw JSON)
 - 404/500 error pages
+## Screenshots
+
+### Login
+![Login](login.png)
+
+### Dashboard
+![Dashboard](dashboard.png)
+
+### Leaderboard
+![Leaderboard](leaderboard.png)
+
+### Edit Profile
+![Edit Profile](editprofile.png)
 
 ## Tech
 Flask + Jinja + Bootstrap + Bootstrap Icons, data.json, Gunicorn on Railway
