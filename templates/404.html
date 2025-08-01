@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="text-center">
+    <h1 class="display-5 mb-3"><i class="bi bi-search"></i> 404</h1>
+    <p class="text-muted mb-4">We couldn't find that page.</p>
+    <a class="btn btn-primary" href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    <a class="btn btn-outline-secondary ms-2" href="{{ url_for('login') }}">Go to Login</a>
+</div>
+{% endblock %}

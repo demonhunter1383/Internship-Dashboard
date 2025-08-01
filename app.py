@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from functools import wraps
 import os, json, re
 
@@ -44,6 +44,19 @@ def login_required(view):
 @app.route("/")
 def index():
     return redirect(url_for("login"))
+
+
+@app.route("/api/user")
+def api_user():
+    data = load_data()
+    return jsonify(data["user"])
+
+
+@app.route("/api/leaderboard")
+def api_leaderboard():
+    data = load_data()
+    items = sorted(data["leaderboard"], key=lambda x: x["totalRaised"], reverse=True)
+    return jsonify({"items": items})
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -98,11 +111,12 @@ def leaderboard():
 @app.route("/explorer/user")
 @login_required
 def explorer_user():
-    data = load_data()["user"]
+    user = load_data()["user"]
+    json_text = json.dumps(user, ensure_ascii=False, indent=2)  # show ₹
     return render_template("api_view.html",
                            title="User API",
                            raw_url=url_for("api_user"),
-                           json_data=data)
+                           json_text=json_text)
 
 
 @app.route("/explorer/leaderboard")
@@ -110,10 +124,11 @@ def explorer_user():
 def explorer_leaderboard():
     data = load_data()
     items = sorted(data["leaderboard"], key=lambda x: x["totalRaised"], reverse=True)
+    json_text = json.dumps({"items": items}, ensure_ascii=False, indent=2)
     return render_template("api_view.html",
                            title="Leaderboard API",
                            raw_url=url_for("api_leaderboard"),
-                           json_data={"items": items})
+                           json_text=json_text)
 
 
 @app.route("/funds/add", methods=["POST"])
@@ -180,6 +195,16 @@ def edit_profile():
         flash("Profile updated.")
         return redirect(url_for("dashboard"))
     return render_template("edit_profile.html", user=data["user"])
+
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("404.html"), 404
+
+
+@app.errorhandler(500)
+def server_error(e):
+    return render_template("500.html"), 500
 
 
 if __name__ == "__main__":

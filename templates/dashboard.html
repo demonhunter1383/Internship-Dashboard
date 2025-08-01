@@ -73,30 +73,20 @@
                 <div class="list-group">
                     <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
                        href="{{ url_for('leaderboard') }}">
-                        View Leaderboard
+                        <span><i class="bi bi-trophy me-2"></i>View Leaderboard</span>
                         <span class="badge bg-secondary">Page</span>
                     </a>
 
                     <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
                        href="{{ url_for('explorer_user') }}">
-                        User API (pretty)
+                        <span><i class="bi bi-person-badge me-2"></i>User API (pretty)</span>
                         <span class="badge bg-info text-dark">Explorer</span>
-                    </a>
-                    <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-                       href="{{ url_for('api_user') }}" target="_blank">
-                        User API (raw)
-                        <span class="badge bg-secondary">JSON</span>
                     </a>
 
                     <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
                        href="{{ url_for('explorer_leaderboard') }}">
-                        Leaderboard API (pretty)
+                        <span><i class="bi bi-list-ol me-2"></i>Leaderboard API (pretty)</span>
                         <span class="badge bg-info text-dark">Explorer</span>
-                    </a>
-                    <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-                       href="{{ url_for('api_leaderboard') }}" target="_blank">
-                        Leaderboard API (raw)
-                        <span class="badge bg-secondary">JSON</span>
                     </a>
                 </div>
             </div>

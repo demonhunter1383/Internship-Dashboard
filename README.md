@@ -64,3 +64,16 @@ Edit `data.json` to change the displayed values. The server reloads the file on 
   ]
 }
 ```
+## Live Demo
+https://<your-app>.up.railway.app
+
+## Routes
+- /login (dummy login)
+- /dashboard (requires session)
+- /leaderboard
+- /explorer/user, /explorer/leaderboard (pretty API views)
+- /api/user, /api/leaderboard (raw JSON)
+- 404/500 error pages
+
+## Tech
+Flask + Jinja + Bootstrap + Bootstrap Icons, data.json, Gunicorn on Railway
