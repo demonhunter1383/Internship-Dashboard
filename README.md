@@ -65,13 +65,13 @@ Edit `data.json` to change the displayed values. The server reloads the file on 
 }
 ```
 ## Live Demo
-https://<your-app>.up.railway.app
+https://web-production-b886b.up.railway.app/login
 
 ## Routes
 - /login (dummy login)
 - /dashboard (requires session)
 - /leaderboard
-- /explorer/user, /explorer/leaderboard (pretty API views)
+- /explorer/user, /explorer/leaderboard
 - /api/user, /api/leaderboard (raw JSON)
 - 404/500 error pages
 ## Screenshots
