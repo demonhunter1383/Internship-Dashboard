@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from functools import wraps
 import os, json, re
 
@@ -95,17 +95,25 @@ def leaderboard():
     return render_template("leaderboard.html", items=items)
 
 
-@app.route("/api/user")
-def api_user():
-    data = load_data()
-    return jsonify(data["user"])
+@app.route("/explorer/user")
+@login_required
+def explorer_user():
+    data = load_data()["user"]
+    return render_template("api_view.html",
+                           title="User API",
+                           raw_url=url_for("api_user"),
+                           json_data=data)
 
 
-@app.route("/api/leaderboard")
-def api_leaderboard():
+@app.route("/explorer/leaderboard")
+@login_required
+def explorer_leaderboard():
     data = load_data()
     items = sorted(data["leaderboard"], key=lambda x: x["totalRaised"], reverse=True)
-    return jsonify({"items": items})
+    return render_template("api_view.html",
+                           title="Leaderboard API",
+                           raw_url=url_for("api_leaderboard"),
+                           json_data={"items": items})
 
 
 @app.route("/funds/add", methods=["POST"])
@@ -123,7 +131,6 @@ def add_funds():
     # Update current user
     data["user"]["totalRaised"] += amount
 
-    # Update leaderboard entry (create if missing)
     lb = data.get("leaderboard", [])
     for x in lb:
         if x["referralCode"] == data["user"]["referralCode"]:
