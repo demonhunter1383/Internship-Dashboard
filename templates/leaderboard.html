@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h4 class="card-title">Leaderboard</h4>
+        <p class="text-muted">Top interns by total amount raised.</p>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Referral Code</th>
+                    <th class="text-end">Total Raised (₹)</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ item.name }}</td>
+                    <td><span class="badge bg-secondary">{{ item.referralCode }}</span></td>
+                    <td class="text-end">{{ "{:,}".format(item.totalRaised) }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

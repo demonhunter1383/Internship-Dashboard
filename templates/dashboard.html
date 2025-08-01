@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row g-3 align-items-stretch">
+    <div class="col-md-8">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="card-title mb-0">Welcome, {{ user.name }}</h4>
+                    <span class="badge bg-secondary">Referral: {{ user.referralCode }}</span>
+                </div>
+                <hr>
+                <div class="row text-center">
+                    <div class="col-sm-6 mb-3">
+                        <div class="p-4 border rounded-3 bg-white">
+                            <div class="fs-6 text-muted">Total Raised</div>
+                            <div class="display-6 fw-bold">₹{{ "{:,}".format(user.totalRaised) }}</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="p-4 border rounded-3 bg-white">
+                            <div class="fs-6 text-muted">Current Tier</div>
+                            {% set tier = 'Bronze' if user.totalRaised < 10000 else ('Silver' if user.totalRaised <
+                            25000 else 'Gold') %}
+                            <div class="display-6 fw-bold">{{ tier }}</div>
+                        </div>
+                    </div>
+                </div>
+                <h5 class="mt-4">Rewards & Unlockables</h5>
+                <div class="row g-3">
+                    {% for r in user.rewards %}
+                    <div class="col-md-4">
+                        <div class="card h-100 border-{{ 'success' if r.unlocked else 'secondary' }}">
+                            <div class="card-body">
+                                <h6 class="card-title">{{ r.title }}</h6>
+                                <p class="card-text text-muted">{{ r.desc or '' }}</p>
+                                {% if r.unlocked %}
+                                <span class="badge bg-success">Unlocked</span>
+                                {% else %}
+                                <span class="badge bg-secondary">Locked</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{{ url_for('leaderboard') }}">View Leaderboard</a></li>
+                    <li><a href="{{ url_for('api_user') }}">User API</a></li>
+                    <li><a href="{{ url_for('api_leaderboard') }}">Leaderboard API</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

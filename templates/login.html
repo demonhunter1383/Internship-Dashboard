@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title mb-3">Dummy Login</h5>
+                <p class="text-muted mb-4">No real authentication. Enter a display name or continue.</p>
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Display name</label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="{{ name }}">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Continue to Dashboard</button>
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary ms-2">Skip</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
