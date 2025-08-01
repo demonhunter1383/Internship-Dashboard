@@ -7,6 +7,22 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-secret")
 
 DATA_PATH = os.path.join(os.path.dirname(__file__), "data.json")
 
+REWARD_THRESHOLDS = {
+    "Bronze Badge": 1000,
+    "Silver Badge": 10000,
+    "Gold Badge": 25000,
+}
+
+
+def recompute_rewards(user: dict) -> None:
+    total = user.get("totalRaised", 0)
+    existing = {r["title"]: r for r in user.get("rewards", [])}
+    for title, threshold in REWARD_THRESHOLDS.items():
+        if title not in existing:
+            existing[title] = {"title": title, "desc": f"Raised ₹{threshold:,}+", "unlocked": False}
+        existing[title]["unlocked"] = total >= threshold
+    user["rewards"] = [existing["Bronze Badge"], existing["Silver Badge"], existing["Gold Badge"]]
+
 
 def make_code(name: str, taken_codes: set) -> str:
     base = re.sub(r'[^a-z0-9]', '', name.lower())
@@ -77,7 +93,7 @@ def login():
                 lb.append(new_rec)
                 data["leaderboard"] = sorted(lb, key=lambda x: x["totalRaised"], reverse=True)
                 data["user"].update(new_rec)
-
+            recompute_rewards(data["user"])
             save_data(data)
             # set session
             session["user_name"] = data["user"]["name"]
@@ -145,6 +161,7 @@ def add_funds():
 
     # Update current user
     data["user"]["totalRaised"] += amount
+    recompute_rewards(data["user"])
 
     lb = data.get("leaderboard", [])
     for x in lb:

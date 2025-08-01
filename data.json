@@ -1,8 +1,8 @@
 {
   "user": {
-    "name": "Parsa Parhami",
-    "referralCode": "parsa2025",
-    "totalRaised": 12500,
+    "name": "Aisha",
+    "referralCode": "aisha2025",
+    "totalRaised": 30123.0,
     "rewards": [
       {
         "title": "Bronze Badge",
@@ -11,17 +11,22 @@
       },
       {
         "title": "Silver Badge",
-        "unlocked": false,
+        "unlocked": true,
         "desc": "Raised \u20b910,000+"
       },
       {
         "title": "Gold Badge",
-        "unlocked": false,
+        "unlocked": true,
         "desc": "Raised \u20b925,000+"
       }
     ]
   },
   "leaderboard": [
+    {
+      "name": "Rohit",
+      "referralCode": "rohit2025",
+      "totalRaised": 1010200.0
+    },
     {
       "name": "Aisha",
       "referralCode": "aisha2025",
@@ -31,11 +36,6 @@
       "name": "Parsa Parhami",
       "referralCode": "parsa2025",
       "totalRaised": 12500
-    },
-    {
-      "name": "Rohit",
-      "referralCode": "rohit2025",
-      "totalRaised": 9200
     },
     {
       "name": "demonhunter1383",
